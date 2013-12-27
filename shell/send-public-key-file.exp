@@ -1,0 +1,27 @@
+#!/usr/bin/expect -f
+
+### 1.send public key to remote server. 
+### 2. make .ssh directory and move authorized_keys file to .ssh directory.
+### then can access with no password.
+
+# set Variables
+set ipaddr [lindex $argv 0]
+set port [lindex $argv 1]
+set passwd [lindex $argv 2]
+set timeout 5 
+
+spawn scp -P $port ~/.ssh/id_rsa.pub root@$ipaddr:~/authorized_keys
+expect "*?assword:"
+send "$passwd\r"
+send "exit\r"
+
+spawn ssh root@$ipaddr -p $port
+
+expect "*?assword:"
+send "$passwd\r"
+expect "#"
+send "mkdir ~/.ssh\r"
+send "mv ~/authorized_keys ~/.ssh/authorized_keys\r"
+expect "#"
+send "exit\r"
+expect eof
