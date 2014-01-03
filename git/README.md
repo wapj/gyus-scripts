@@ -86,4 +86,7 @@ git config format.pretty oneline
 
 # 파일 추가시 대화식으로 추가하기
 git add -i
+
+# 원격 저장소의 URL을 변경하고 싶은 경우 
+git remote set-url origin <URL>
 ```
