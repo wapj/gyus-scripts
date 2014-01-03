@@ -8,11 +8,14 @@
 set ipaddr [lindex $argv 0]
 set port [lindex $argv 1]
 set passwd [lindex $argv 2]
-set timeout 5 
+set home [lindex $argv 3]
+set timeout -1 
 
-spawn scp -P $port ~/.ssh/id_rsa.pub root@$ipaddr:~/authorized_keys
+spawn scp -P $port $home/.ssh/id_rsa.pub root@$ipaddr:~/authorized_keys
 expect "*?assword:"
 send "$passwd\r"
+expect 100%
+sleep 1
 send "exit\r"
 
 spawn ssh root@$ipaddr -p $port
