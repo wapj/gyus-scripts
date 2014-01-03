@@ -1,4 +1,5 @@
-# git 사용법
+git 사용법
+==========
 
 아래 링크에 있는건데 자주 쓰는거라 안까먹을려고 기록
 
@@ -89,4 +90,65 @@ git add -i
 
 # 원격 저장소의 URL을 변경하고 싶은 경우 
 git remote set-url origin <URL>
+
+# .gitignore 설정하기
+# .gitignore 파일을 설정하기 전에 만든 파일이 있는경우 캐시를 삭제해줘야함.
+# 캐시 삭제
+
+git rm --cached .
+
+# 전역 .gitignore (Global .gitignore)
+# ~/.gitignore_global 등의 적당한 파일을 하나 만듬
+# 아래 명령을 실행하면 위에서 만든파일을 전역 .gitignore파일로 인식함
+git config --global core.excludesfile ~/.gitignore_global
+
+```
+
+### .gitignore on github
+
+https://help.github.com/articles/ignoring-files
+
+### gitignore 예제 파일들 - 거의 다있는 듯
+
+https://github.com/github/gitignore
+
+### 전역 .gitignore파일의 예시 (from github)
+```
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 ```
