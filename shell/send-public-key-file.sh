@@ -8,8 +8,10 @@ USER_HOME=$(eval echo ~`whoami`)
 
 expect <<END
    set timeout -1
-
+    
     spawn scp -P $PORT $USER_HOME/.ssh/id_rsa.pub root@$IP:~/authorized_keys
+    expect "yes";
+    send "yes\r"
     expect "*?assword:"
     send "$PASSWD\r"
     expect 100%
