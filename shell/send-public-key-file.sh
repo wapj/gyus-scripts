@@ -10,8 +10,6 @@ expect <<END
    set timeout -1
     
     spawn scp -P $PORT $USER_HOME/.ssh/id_rsa.pub root@$IP:~/authorized_keys
-    expect "yes";
-    send "yes\r"
     expect "*?assword:"
     send "$PASSWD\r"
     expect 100%
@@ -19,7 +17,6 @@ expect <<END
     send "exit\r"
 
     spawn ssh -o StrictHostKeyChecking=no root@$IP -p $PORT
-
     expect "*?assword:"
     send "$PASSWD\r"
     expect "#"

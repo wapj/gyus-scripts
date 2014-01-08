@@ -12,8 +12,6 @@ set home [lindex $argv 3]
 set timeout -1 
 
 spawn scp -P $port $home/.ssh/id_rsa.pub root@$ipaddr:~/authorized_keys
-expect "yes";
-send "yes\r";
 expect "*?assword:"
 send "$passwd\r"
 expect 100%
